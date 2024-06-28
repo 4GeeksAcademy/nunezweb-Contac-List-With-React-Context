@@ -1,0 +1,8 @@
+i:hover {
+    background-color: #f0f0f0;
+    border: 1px solid #333;
+    padding: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease; 
+}

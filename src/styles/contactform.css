@@ -1,0 +1,9 @@
+.linkTo {
+    text-decoration: underline black;
+}
+
+.backTo {
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+}
