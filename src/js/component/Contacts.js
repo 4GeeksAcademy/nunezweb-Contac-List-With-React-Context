@@ -21,14 +21,14 @@ const Contacts = () => {
                 className="card w-100 m-3 border border-3 rounded p-2 text-dark bg-opacity-10"
               >
                 <div className="row">
-                  <div className="col-3">
+                  <div className="col-12 col-md-3 text-center">
                     <img
                       src={picProfile}
-                      className="rounded-circle"
+                      className="rounded-circle img-fluid"
                       alt="Picture Profile"
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-12 col-md-6">
                     <div className="card-body">
                       <h5 className="card-title">
                         <span className="border-bottom">{contact.name}</span>
@@ -48,25 +48,22 @@ const Contacts = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="d-flex col-3 justify-content-around my-5">
-                    <div>
-                      <button
-                        className="bookmarkBtn"
-                        onClick={() => navigate("/edit/" + contact.id)}
-                        title="Edit Contact"
-                      >
-                        <span className="text">Edit</span>
-                      </button>
-                    </div>
-                    <div>
-                      <button
-                        className="bookmarkBtn"
-                        onClick={() => actions.deleteContact(contact.id)}
-                        title="Delete Contact"
-                      >
-                        <span className="text">Delete</span>
-                      </button>
-                    </div>
+                  {/* <div className="col-12 col-md-3 align-items-center align-middle"> */}
+                  <div className="col-12 col-md-3 d-flex flex-column justify-content-center mt-3 mx-2">
+                    <button
+                      className="bookmarkBtn my-2"
+                      onClick={() => navigate("/edit/" + contact.id)}
+                      title="Edit Contact"
+                    >
+                      <span className="text">Edit</span>
+                    </button>
+                    <button
+                      className="bookmarkBtn my-2"
+                      onClick={() => actions.deleteContact(contact.id)}
+                      title="Delete Contact"
+                    >
+                      <span className="text">Delete</span>
+                    </button>
                   </div>
                 </div>
               </div>
