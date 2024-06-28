@@ -10,7 +10,7 @@ export const Footer = () => (
           target="_blank"
           className="text-decoration-none text-white fw-bold"
         >
-          Alex
+          Alejandro Núñez
         </a>
       </p>
     </div>

@@ -7,17 +7,17 @@ import "../../styles/contact.css";
 const Contacts = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
-
+console.log(store.contacts)
   return (
     <div className="container-fluid m-3 p-3">
       <div>
         <h1 className="text-center text-secondary">Contact List</h1>
         {store.contacts &&
           store.contacts.length > 0 &&
-          store.contacts.map((contact) => {
+          store.contacts.map((contact, index) => {
             return (
               <div
-                key={contact.id}
+                key={index}
                 className="card m-3 border border-3 rounded p-2 text-dark bg-opacity-10"
               >
                 <div className="row">
