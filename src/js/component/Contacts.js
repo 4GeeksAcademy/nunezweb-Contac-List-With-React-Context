@@ -21,14 +21,14 @@ const Contacts = () => {
                 className="card w-100 m-3 border border-3 rounded p-2 text-dark bg-opacity-10"
               >
                 <div className="row">
-                  <div className="col-2">
+                  <div className="col-3">
                     <img
                       src={picProfile}
                       className="rounded-circle"
                       alt="Picture Profile"
                     />
                   </div>
-                  <div className="col-8">
+                  <div className="col-6">
                     <div className="card-body">
                       <h5 className="card-title">
                         <span className="border-bottom">{contact.name}</span>
@@ -48,22 +48,24 @@ const Contacts = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="d-flex col-2 justify-content-around my-5">
+                  <div className="d-flex col-3 justify-content-around my-5">
                     <div>
-                      <i
-                        role="button"
+                      <button
+                        className="bookmarkBtn"
                         onClick={() => navigate("/edit/" + contact.id)}
-                        className="fas fa-edit text-primary fs-5"
                         title="Edit Contact"
-                      ></i>
+                      >
+                        <span className="text">Edit</span>
+                      </button>
                     </div>
                     <div>
-                      <i
-                        role="button"
+                      <button
+                        className="bookmarkBtn"
                         onClick={() => actions.deleteContact(contact.id)}
-                        className="fas fa-trash-alt text-danger fs-5"
                         title="Delete Contact"
-                      ></i>
+                      >
+                        <span className="text">Delete</span>
+                      </button>
                     </div>
                   </div>
                 </div>
