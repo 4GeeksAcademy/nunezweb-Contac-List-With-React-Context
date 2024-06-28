@@ -18,7 +18,7 @@ const Contacts = () => {
             return (
               <div
                 key={contact.id}
-                className="card w-100 m-3 border border-3 rounded p-2 text-dark bg-opacity-10"
+                className="card m-3 border border-3 rounded p-2 text-dark bg-opacity-10"
               >
                 <div className="row">
                   <div className="col-12 col-md-3 text-center">
@@ -48,8 +48,7 @@ const Contacts = () => {
                       </p>
                     </div>
                   </div>
-                  {/* <div className="col-12 col-md-3 align-items-center align-middle"> */}
-                  <div className="col-12 col-md-3 d-flex flex-column justify-content-center mt-3 mx-2">
+                  <div className="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center">
                     <button
                       className="bookmarkBtn my-2"
                       onClick={() => navigate("/edit/" + contact.id)}
