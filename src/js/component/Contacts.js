@@ -7,7 +7,6 @@ import "../../styles/contact.css";
 const Contacts = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
-console.log(store.contacts)
   return (
     <div className="container-fluid m-3 p-3">
       <div>

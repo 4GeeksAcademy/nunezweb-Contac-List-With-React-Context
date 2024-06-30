@@ -12,16 +12,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           const response = await fetch(`${store.apiUrl}/${store.user}`, {
             method: "POST",
           });
-          console.log(response);
           const data = await response.json();
           if (response.ok) {
-            console.log(data);
             return true;
           }
-          console.log(data);
           return false;
         } catch (error) {
-          console.log(error);
           return false;
         }
       },
@@ -31,18 +27,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           const response = await fetch(
             `${store.apiUrl}/${store.user}/contacts`
           );
-          console.log(response);
           const data = await response.json();
           if (response.ok) {
-            console.log(data);
             setStore({ contacts: data.contacts });
             return true;
           }
-          console.log(data);
           setStore({ contacts: false });
           return false;
         } catch (error) {
-          console.log(error);
           setStore({ contacts: false });
           return false;
         }
@@ -61,17 +53,13 @@ const getState = ({ getStore, getActions, setStore }) => {
               },
             }
           );
-          console.log(response);
           const data = await response.json();
           if (response.ok) {
-            console.log(data);
             actions.getContacts();
             return true;
           }
-          console.log(data);
           return false;
         } catch (error) {
-          console.log(error);
           return false;
         }
       },
@@ -90,17 +78,13 @@ const getState = ({ getStore, getActions, setStore }) => {
               },
             }
           );
-          console.log(response);
           const data = await response.json();
           if (response.ok) {
-            console.log(data);
             actions.getContacts();
             return true;
           }
-          console.log(data);
           return false;
         } catch (error) {
-          console.log(error);
           return false;
         }
       },
@@ -113,29 +97,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             `${store.apiUrl}/${store.user}/contacts/${id}`,
             { method: "DELETE" }
           );
-          console.log(response);
           const data = await response;
           if (response.ok) {
-            console.log(data);
             actions.getContacts();
             return true;
           }
-          console.log(data);
           return false;
         } catch (error) {
-          console.log(error);
           return false;
         }
       },
-
-      // Use getActions to call a function within a fuction
-      //  getContacts: () => {
-      // 	const store = getStore();
-      //  	fetch('https://playground.4geeks.com/contact/agendas/nunezweb')
-      // 	.then((response)=> response.json() )
-      // 	.then((data)=> setStore({contacts: data.contacts}))
-      // 	console.log(contacts)
-      //  },
     },
   };
 };
