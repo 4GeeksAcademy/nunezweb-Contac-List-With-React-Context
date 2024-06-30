@@ -3,7 +3,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { Context } from "../store/AppContext";
 import "../../styles/contactform.css";
 
-const ContactForm = () => {
+const AddContact = () => {
   const { store, actions } = useContext(Context);
   const [contact, setContact] = useState({
     name: "",
@@ -132,4 +132,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default AddContact;
