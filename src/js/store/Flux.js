@@ -18,6 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           return false;
         } catch (error) {
+          console.error("Error", error);
           return false;
         }
       },
@@ -35,6 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ contacts: false });
           return false;
         } catch (error) {
+          console.error("Error", error);
           setStore({ contacts: false });
           return false;
         }
@@ -60,6 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           return false;
         } catch (error) {
+          console.error("Error", error);
           return false;
         }
       },
@@ -85,6 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           return false;
         } catch (error) {
+          console.error("Error", error);
           return false;
         }
       },
@@ -104,6 +108,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           return false;
         } catch (error) {
+          console.error("Error", error);
           return false;
         }
       },
