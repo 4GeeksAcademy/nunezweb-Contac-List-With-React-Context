@@ -11,33 +11,15 @@ const ContactForm = () => {
     phone: "",
     address: "",
   });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const params = useParams();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevenir comportamiento predeterminado del formulario
-    // Verificar si algún campo está vacío
-    if (!contact.name || !contact.email || !contact.phone || !contact.address) {
-      alert("All fields are required.");
-      return false;
-    }
-    let response;
-    if (!params.id) {
-      response = await actions.addContact(contact);
-    } else {
-      response = await actions.editContact(contact, params.id);
-    }
-    if (response) {
-      navigate("/");
-      return true;
-    }
-    return false;
-  };
-
   useEffect(() => {
     if (params.id) {
+      const id = Number(params.id);
       const existingContact = store.contacts.find(
-        (contact) => contact.id == params.id
+        (contact) => contact.id === id
       );
       if (existingContact) {
         setContact(existingContact);
@@ -51,6 +33,27 @@ const ContactForm = () => {
       });
     }
   }, [params.id, store.contacts]);
+
+  const handleChange = (e) => {
+    setContact({
+      ...contact,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!contact.name || !contact.email || !contact.phone || !contact.address) {
+      setError("All fields are required.");
+      return;
+    }
+    const response = !params.id
+      ? await actions.addContact(contact)
+      : await actions.editContact(contact, params.id);
+    if (response) {
+      navigate("/");
+    }
+  };
 
   return (
     <>
@@ -69,72 +72,58 @@ const ContactForm = () => {
               <h1>
                 {!params.id ? "Add a new contact" : "Edit contact " + params.id}
               </h1>
+              {error && <p className="text-danger">{error}</p>}
               <div className="form-floating mb-3">
                 <input
-                  onChange={(e) =>
-                    setContact({ ...contact, name: e.target.value })
-                  }
                   type="text"
                   className="form-control"
+                  id="name"
                   name="name"
+                  placeholder="Name"
                   value={contact.name}
-                  id="inputName"
-                  placeholder="Enter Name"
+                  onChange={handleChange}
                 />
-                <label htmlFor="inputName">Name</label>
+                <label htmlFor="name">Name</label>
               </div>
               <div className="form-floating mb-3">
                 <input
-                  onChange={(e) =>
-                    setContact({ ...contact, email: e.target.value })
-                  }
                   type="email"
                   className="form-control"
+                  id="email"
                   name="email"
+                  placeholder="Email"
                   value={contact.email}
-                  id="inputEmail"
-                  placeholder="Enter Email"
+                  onChange={handleChange}
                 />
-                <label htmlFor="inputEmail">Email</label>
+                <label htmlFor="email">Email</label>
               </div>
               <div className="form-floating mb-3">
                 <input
-                  onChange={(e) =>
-                    setContact({ ...contact, phone: e.target.value })
-                  }
-                  value={contact.phone}
-                  name="phone"
-                  type="number"
+                  type="phone"
                   className="form-control"
-                  id="inputPhone"
-                  placeholder="Enter Phone"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone"
+                  value={contact.phone}
+                  onChange={handleChange}
                 />
-                <label htmlFor="inputPhone">Phone</label>
+                <label htmlFor="phone">Phone</label>
               </div>
               <div className="form-floating mb-3">
                 <input
-                  onChange={(e) =>
-                    setContact({ ...contact, address: e.target.value })
-                  }
-                  value={contact.address}
-                  name="address"
                   type="text"
                   className="form-control"
-                  id="inputAddress"
-                  placeholder="Enter Address"
+                  id="address"
+                  name="address"
+                  placeholder="Address"
+                  value={contact.address}
+                  onChange={handleChange}
                 />
-                <label
-                  htmlFor="inputAddress"
-                  className="col-sm-2 col-form-label"
-                >
-                  Address
-                </label>
+                <label htmlFor="address">Address</label>
               </div>
-              <div>
-                <button className="saveButton" type="submit">
-                  Save
-                </button>
-              </div>
+              <button type="submit" className="saveButton">
+                Save
+              </button>
             </form>
           </div>
         </div>
