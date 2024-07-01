@@ -7,7 +7,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Contact from "./views/Contact";
 import AddContact from "./views/AddContact";
-import NotFoundPage from "./component/NotFoundPage";
+import NotFoundPage from "./views/NotFoundPage";
 
 //create your first component
 const Layout = () => {

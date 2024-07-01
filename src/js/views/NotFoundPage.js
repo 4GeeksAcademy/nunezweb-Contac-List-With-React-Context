@@ -11,7 +11,7 @@ const NotFoundPage = () => {
         <p className="h4 text-secondary mb-4">
           Oops! The page you are looking for does not exist.
         </p>
-        <button onClick={() => navigate("/")} className="btn btn-primary">
+        <button onClick={() => navigate("/")} className="bookmarkBtn">
           Go Home
         </button>
       </div>
